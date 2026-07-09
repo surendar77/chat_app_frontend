@@ -1,5 +1,6 @@
 import gradio as gr
 import requests
+import os
 
 FASTAPI_URL = "https://chat-app-backend-3-n7qo.onrender.com/chat"
 
@@ -25,4 +26,10 @@ demo = gr.Interface(
     description="Gradio + FastAPI + Gemini"
 )
 
-demo.launch()
+
+
+if __name__ == "__main__":
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", 7860))
+    )
